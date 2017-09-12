@@ -59,18 +59,18 @@ public class InternetServiceProvider{
 	   
 	   if(packageLetter=='A'|| packageLetter=='a') {
 		   if(hours_Used<=PACKAGE_A_BASE_HOUR) {
-			   System.out.println("Total Cost is " +PACKAGE_A_MONTHLY_RATE);
+			   System.out.println("Total Cost is $" +PACKAGE_A_MONTHLY_RATE);
 			   System.out.print("Goodbye");
 		   }// end bracket of inside if 
 		   else if(hours_Used>PACKAGE_A_BASE_HOUR) {
-			   total_Cost_Package_A=(hours_Used-PACKAGE_A_BASE_HOUR)*PACKAGE_A_HOURLY_RATE;
-			   System.out.print("Total Cost is " +total_Cost_Package_A);
+			   total_Cost_Package_A=(hours_Used-PACKAGE_A_BASE_HOUR+PACKAGE_A_MONTHLY_RATE)*PACKAGE_A_HOURLY_RATE;
+			   System.out.println("Total Cost is " + total_Cost_Package_A);
 			   //calculate the money the user will save if switch to package B
 			   savings_Package_B=total_Cost_Package_A-PACKAGE_B_MONTHLY_RATE;
-			   System.out.println("Customer A can save $" + savings_Package_B + "if he purhcases package B");
+			   System.out.println("Customer A can save $" + savings_Package_B + " if he purhcases package B.");
 			   //calculate the money the user will save if switch to package C
 			   savings_Package_C=total_Cost_Package_A-PACKAGE_C_MONTHLY_RATE;
-			   System.out.println("Customer A can save $" + savings_Package_C + "if he purhcases package C");
+			   System.out.println("Customer A can save $" + savings_Package_C + " if he purhcases package C.");
 			   System.out.print("Goodbye");
 			   
 		   }//bracket if inside else if 
@@ -79,16 +79,16 @@ public class InternetServiceProvider{
 	   
 	   else if(packageLetter=='B'||packageLetter=='b') {
 		   if (PACKAGE_A_BASE_HOUR<hours_Used || hours_Used<=PACKAGE_B_BASE_HOUR) {
-			   System.out.println("Total Cost is " + PACKAGE_B_MONTHLY_RATE);
+			   System.out.println("Total Cost is $" + PACKAGE_B_MONTHLY_RATE);
 			   System.out.print("Goodbye");
 		   }// end of inside if
 		   else if(hours_Used>PACKAGE_B_BASE_HOUR) {
-			   total_Cost_Package_B=(hours_Used-PACKAGE_B_BASE_HOUR)*PACKAGE_B_HOURLY_RATE;
-			   System.out.print("Total Cost is " +total_Cost_Package_B);
+			   total_Cost_Package_B=(hours_Used-PACKAGE_B_BASE_HOUR+PACKAGE_B_MONTHLY_RATE)*PACKAGE_B_HOURLY_RATE;
+			   System.out.print("Total Cost is $" +total_Cost_Package_B);
 			
 			   //calculate the money the user will save if switch to package C
 			   savings_Package_C=total_Cost_Package_B-PACKAGE_C_MONTHLY_RATE;
-			   System.out.println("Customer A can save $" + savings_Package_C + "if he purhcases package C");
+			   System.out.println("Customer A can save $" + savings_Package_C + " if he purhcases package C");
 			   System.out.print("Goodbye");
 			   
 		   }//end of inside else
@@ -96,10 +96,13 @@ public class InternetServiceProvider{
 	   }//outside else if bracket
 	   
 	   else if(packageLetter=='C'||packageLetter=='c'){
-		   System.out.print("Total Cost is " + PACKAGE_C_MONTHLY_RATE);
+		   System.out.println("Total Cost is " + PACKAGE_C_MONTHLY_RATE);
 		   System.out.print("Goodbye");
 		   
 	   }//second outside else if bracket   
+	   else {
+		   System.out.print("Incorrect letter");
+	   }
 	  
    }	 //end of main
   }//end of public class
