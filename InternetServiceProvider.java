@@ -9,6 +9,11 @@
     DUE DATE: 09/14/2017
 
 SUMMARY
+Write a program that calculates a customer’s monthly bill.
+ It should ask the user to enter the letter of the package the customer has purchased (A, B, or C) and the number of hours that were used. 
+It should the display the total charges. 
+In addition, it should display the amount of money Package A customers would save if they purchased Package B or C, and the amount of money Package B customers would save if they purchased Package C. 
+If there would be no savings, no message should be printed.
 
 INPUT
 -Ask the user to enter the letter of the package the customer has purchased (A, B, or C) 
@@ -21,6 +26,7 @@ OUTPUT
 $34.56, etc.
 
 ASSUMPTIONS
+The user will enter an integer for the number of hours used 
 
 /* MAIN FUNCTION */
 import java.util.Scanner;
@@ -83,41 +89,48 @@ public class InternetServiceProvider{
 			   System.out.print("Goodbye");
 		   }// end of inside if
 		   
-		   else if(hours_Used>PACKAGE_B_BASE_HOUR) {
+		   else if(hours_Used>26) {
 			   total_Cost_Package_B=(hours_Used-PACKAGE_B_BASE_HOUR+PACKAGE_B_MONTHLY_RATE)*PACKAGE_B_HOURLY_RATE;
 			   System.out.printf("Total Cost is $%.2f.\n",total_Cost_Package_B);
-			
+		
 			   //calculate the money the user will save if switch to package C
 			   savings_Package_C=total_Cost_Package_B-PACKAGE_C_MONTHLY_RATE;
 			   System.out.printf("Customer A can save $%.2f if he purhcases package C.\n",savings_Package_C);
 			   System.out.print("Goodbye");   
 		   }//end of inside else
 		   
+		   else if(hours_Used>=21 && hours_Used<=26) {
+			   System.out.printf("Total Cost is $%.2f.\n", PACKAGE_B_MONTHLY_RATE);
+			   System.out.print("Goodbye");
+		   }
 		   else if(hours_Used<=PACKAGE_A_BASE_HOUR) {
 			   //Total Cost
 			   System.out.printf("Total Cost is $%.2f.\n",PACKAGE_B_MONTHLY_RATE);
 			   //calculate the money the user will save if switch to package A
 			   savings_Package_A=PACKAGE_B_MONTHLY_RATE-PACKAGE_A_MONTHLY_RATE;
 			   System.out.printf("Customer A can save $%.2f if he purhcases package A.\n",savings_Package_A); 
+			   System.out.print("Goodbye");
 		   }//second else if bracket
 	   }//outside else if bracket
 	   //Package C
 	   else if(packageLetter=='C'||packageLetter=='c'){
 		   if(hours_Used>PACKAGE_B_BASE_HOUR){
-		   System.out.printf("Total Cost is $%.2f ",PACKAGE_C_MONTHLY_RATE);
+		   System.out.printf("Total Cost is $%.2f.\n",PACKAGE_C_MONTHLY_RATE);
 		   System.out.print("Goodbye");
 		   }//inside if bracket
 		   else if(hours_Used>PACKAGE_A_BASE_HOUR && hours_Used<=PACKAGE_B_BASE_HOUR) {
 			   System.out.printf("Total Cost is $%.2f.\n",PACKAGE_C_MONTHLY_RATE);
 			   //Calculate savings if customer switches to package B
 			   savings_Package_B=PACKAGE_C_MONTHLY_RATE-PACKAGE_B_MONTHLY_RATE;
-			   System.out.printf("Customer A can save $%.2f if he purhcases package B.\n",savings_Package_B);   
+			   System.out.printf("Customer A can save $%.2f if he purhcases package B.\n",savings_Package_B); 
+			   System.out.print("Goodbye");
 		   }//inside else if bracket
 		   else if(hours_Used<=PACKAGE_A_BASE_HOUR){
-			   System.out.printf("Total Cost is $%.2f.\n ",PACKAGE_C_MONTHLY_RATE);
+			   System.out.printf("Total Cost is $%.2f.\n",PACKAGE_C_MONTHLY_RATE);
 			   //Calculate savings if customer switches to package a
 			   savings_Package_A=PACKAGE_C_MONTHLY_RATE-PACKAGE_A_MONTHLY_RATE;
 			   System.out.printf("Customer A can save $%.2f if he purhcases package A.\n",savings_Package_A); 
+			   System.out.print("Goodbye");
 		   }//second else if inside
 	   }//second outside else if bracket   
 	   else {
